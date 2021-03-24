@@ -1,7 +1,5 @@
 import Libro
 
-#datos de libros inventados
-libro_1 = Libro("Cervantes", "Don Quijote", 1950)
 
 
 def get_list (fichero):
@@ -24,6 +22,9 @@ def get_list (fichero):
         for lineas in f:
         palabras.extend(lineas.split())
 
+    except:
+        raise ValueError("El fichero esta vacio")
+    else:
         for i in range(len(palabras)):
             if(len(palabras[i]) == 1):
                 p_1.append(palabras[i])
@@ -63,8 +64,33 @@ def get_list (fichero):
         diccionario[9] = p_9
 
         return diccionario
-    except:
-        print("ValueError: el fichero esta vacio")
 
 def mas_antiguos(lista, anyo):
+
+        if anyo < 1900:
+            raise ValueError("El año indicado es menos que 1900 o mayor que 2021")
+        if anyo > 2021:
+            raise ValueError("El año indicado es menos que 1900 o mayor que 2021")
+
+        lista_titulos = []
+
+        for i in range(len(lista)):
+
+            if(lista[i].anyo <= anyo)
+                lista_titulos.append(lista[i].titulo)
+
+        return lista_titulos
     
+'''----MAIN----'''
+libro_1 = Libro("Cervantes", "Don Quijote", 1950)
+libro_2 = Libro("Marías, Javier", "Tomás Nevinson", 2020)
+
+libros = [libro_1, libro_2]
+
+#Test
+titulos_1 = mas_antiguos(libros, 1960)
+
+titulos_2 = mas_antiguos(libros, 1890)
+
+titulos_3 = mas_antiguos(libros, 2022)
+
