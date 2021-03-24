@@ -7,6 +7,7 @@ def get_list (fichero):
     data=f.readlines()
     f.close
 
+    #Seguro que hay una forma de hacerlo mas simple pero ahora no se me ocurre otra forma
     palabras = []
     p_1 = []
     p_2 = []
