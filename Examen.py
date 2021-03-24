@@ -1,9 +1,11 @@
-import Libro
+from libro import *
 
 
 
 def get_list (fichero):
-    with fichero open as f
+    f = open(fichero, mode="wt", encoding="utf-8")
+    data=f.readlines()
+    f.close
 
     palabras = []
     p_1 = []
@@ -19,8 +21,9 @@ def get_list (fichero):
     diccionario = {}
 
     try:
-        for lineas in f:
-        palabras.extend(lineas.split())
+        for renglon in data:
+            for palabra in renglon.split(' '):
+                palabras.append(palabra)
 
     except:
         raise ValueError("El fichero esta vacio")
@@ -76,21 +79,27 @@ def mas_antiguos(lista, anyo):
 
         for i in range(len(lista)):
 
-            if(lista[i].anyo <= anyo)
+            if lista[i].anyo <= anyo:
                 lista_titulos.append(lista[i].titulo)
 
         return lista_titulos
     
 '''----MAIN----'''
-libro_1 = Libro("Cervantes", "Don Quijote", 1950)
-libro_2 = Libro("Marías, Javier", "Tomás Nevinson", 2020)
+libro_1 = libro("Cervantes", "Don Quijote", 1950)
+libro_2 = libro("Marías, Javier", "Tomás Nevinson", 2020)
 
 libros = [libro_1, libro_2]
 
 #Test
 titulos_1 = mas_antiguos(libros, 1960)
+print(titulos_1)
+
+titulos_4 = mas_antiguos(libros, 2020)
+print(titulos_4)
 
 titulos_2 = mas_antiguos(libros, 1890)
+print(titulos_2)
 
 titulos_3 = mas_antiguos(libros, 2022)
+print(titulos_3)
 
